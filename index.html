@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRABot — Talk, Render, Act</title>
+<meta name="description" content="TRABot: an agent-based framework that coordinates streaming speech, an audio-driven digital face, and semantically planned gestures on a Unitree G1 humanoid.">
+<meta name="citation_title" content="Talk, Render, Act: Integrating Social Gesture and Digital Face with Synchronized Speech for Conversational Humanoid Robot">
+<meta name="citation_arxiv_id" content="2610.06153">
+<meta property="og:title" content="TRABot — Talk, Render, Act">
+<meta property="og:description" content="Streaming speech, a digital face, and semantically planned gestures in one real-time loop on a humanoid robot.">
+<meta property="og:image" content="assets/img/real-poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="nav__mark" href="#top">TRABot</a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#film">Film</a>
+    <a href="#method">Method</a>
+    <a href="#dialogues">Dialogues</a>
+    <a href="#results">Results</a>
+    <a href="#cite">Cite</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ───────────── HERO ───────────── -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__text">
+      <h1 class="title">Talk, Render, Act</h1>
+      <p class="subtitle">Integrating Social Gesture and Digital Face with Synchronized Speech for Conversational Humanoid Robot</p>
+
+      <div class="byline">
+        <p class="authors">
+          <span>Jin Jiang<sup>1</sup></span>
+          <span>Kun Li<sup>1</sup></span>
+          <span>Jiancong Ma<sup>1</sup></span>
+          <span>Shengcai Liao<sup>1,†</sup></span>
+        </p>
+        <p class="affil"><sup>1</sup>United Arab Emirates University (UAEU) <span class="affil__note"><sup>†</sup>Corresponding author</span></p>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn--solid" href="https://arxiv.org/abs/2610.06153" target="_blank" rel="noopener">Paper</a>
+        <a class="btn" href="#film">Demo video</a>
+        <a class="btn" href="#dialogues">Dialogues</a>
+        <span class="btn btn--off" title="Coming soon">Code (soon)</span>
+      </div>
+
+      <dl class="trio">
+        <div style="--c:var(--talk)"><dt>Talk</dt><dd>Streaming speech</dd></div>
+        <div style="--c:var(--render)"><dt>Render</dt><dd>Audio-driven digital face</dd></div>
+        <div style="--c:var(--act)"><dt>Act</dt><dd>Semantically planned gesture</dd></div>
+      </dl>
+    </div>
+
+    <figure class="hero__robot">
+      <div class="frame">
+        <video id="heroVideo" src="assets/video/real.mp4" poster="assets/img/real-poster.jpg" loop playsinline preload="metadata"></video>
+        <button class="bigplay" id="heroBig" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.500z"/></svg></button>
+        <div class="frame__bar">
+          <button class="sound" id="heroPlay" type="button">Play</button>
+          <button class="sound" id="heroSound" type="button" aria-pressed="true">Sound on</button>
+        </div>
+      </div>
+      <figcaption>Physical Unitree G1, answering in real time.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ───────────── FILM ───────────── -->
+<section class="stage" id="film">
+  <div class="wrap">
+    <div class="sectionhead sectionhead--dark">
+      <h2>Overall demo video</h2>
+      <p>Physical-robot experiment first, then the simulation dialogues with every condition we compare.</p>
+    </div>
+    <video class="film" src="assets/video/overview.mp4" poster="assets/img/overview-poster.jpg" controls playsinline preload="metadata"></video>
+  </div>
+</section>
+
+<!-- ───────────── METHOD ───────────── -->
+<section class="wrap figs" id="method">
+  <div class="sectionhead">
+    <h2>Method</h2>
+    <p>One offline agent builds the motion vocabulary; three online agents turn each spoken reply into speech, a face, and gesture.</p>
+  </div>
+  <figure class="paperfig">
+    <a href="assets/img/method.jpg" target="_blank" rel="noopener"><img src="assets/img/method.jpg" width="2590" height="1216" alt="Overview of TRABot: offline motion atom construction, online planning, and real-time embodiment with Talk, Render and Act lanes." loading="lazy"></a>
+    <figcaption><b>Overview of TRABot.</b> The offline Motion Atom Construction Agent converts G1-retargeted BEAT2 motion into an approved catalog of Robot-Ready Semantic Motion Atoms. Online, the Dialogue Agent generates streaming reply audio and a semantic motion request. The Motion Planning Agent composes approved atoms and constructs state-dependent transitions, while the Facial Animation Agent generates facial frames from the same audio stream. Speech, facial animation, and robot body motion are then executed concurrently.</figcaption>
+  </figure>
+</section>
+
+<!-- ───────────── QUALITATIVE ───────────── -->
+<section class="wrap figs" id="qualitative">
+  <div class="sectionhead">
+    <h2>Qualitative results</h2>
+    <p>The highlighted words are what the gesture should correspond to. Play the same turns as video in the section below.</p>
+  </div>
+  <figure class="paperfig">
+    <a href="assets/img/visual.jpg" target="_blank" rel="noopener"><img src="assets/img/visual.jpg" width="2584" height="1300" alt="Body-motion keyframes for two dialogue turns under Simple Motion, Random Motion and the full TRABot system." loading="lazy"></a>
+    <figcaption><b>Action–speech alignment.</b> Each row shows a user utterance, the robot’s spoken reply, and body-motion keyframes under Simple Motion, Random Motion, and Full (TRABot). Simple and Random Motion can produce actions weakly related to the highlighted speech; the full system produces actions that reflect its meaning.</figcaption>
+  </figure>
+</section>
+
+<!-- ───────────── DIALOGUES ───────────── -->
+<section class="stage" id="dialogues">
+  <div class="wrap">
+    <div class="sectionhead sectionhead--dark">
+      <h2>Twelve dialogues, five conditions</h2>
+      <p>The same reply audio, replayed under each condition from the user study. All five clips play in sync; the score underneath is the timing the full system actually logged for that reply.</p>
+    </div>
+
+    <div class="lab">
+      <ol class="cases" id="caseList" aria-label="Dialogue cases"></ol>
+
+      <div class="lab__main">
+        <div class="talk">
+          <p class="talk__user"><span>User</span><q id="userText"></q></p>
+          <p class="talk__robot"><span>Robot</span><q id="replyText"></q></p>
+        </div>
+
+        <div class="tiles" id="tiles"></div>
+
+        <div class="transport">
+          <button class="play" id="playBtn" type="button" aria-label="Play">Play</button>
+          <button class="ghost" id="muteBtn" type="button" aria-pressed="false">Sound on</button>
+          <span class="now" id="nowFn" aria-live="off"></span>
+          <span class="clock" id="clock">0.0 s</span>
+        </div>
+
+        <div class="score" id="score">
+          <div class="score__row" style="--c:var(--talk)">
+            <div class="score__tag">Talk</div>
+            <div class="score__track"><svg id="wave" preserveAspectRatio="none" aria-hidden="true"></svg></div>
+          </div>
+          <div class="score__row" style="--c:var(--render)">
+            <div class="score__tag">Render</div>
+            <div class="score__track"><div class="facebar" id="faceBar"></div></div>
+          </div>
+          <div class="score__row score__row--act" style="--c:var(--act)">
+            <div class="score__tag">Act</div>
+            <div class="score__track" id="actTrack"></div>
+          </div>
+          <div class="score__row score__row--axis">
+            <div class="score__tag"></div>
+            <div class="score__track" id="axis"></div>
+          </div>
+          <div class="score__hit" id="scoreHit" role="slider" tabindex="0" aria-label="Scrub reply timeline" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="playhead" id="playhead"></div>
+          </div>
+        </div>
+        <p class="score__note">Time is measured from the first sample of reply audio. Hatched segments are minimum-jerk bridges from the measured pose into each atom; the outlined block is the return to neutral. <span id="tiouNote"></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── RESULTS ───────────── -->
+<section class="wrap results" id="results">
+  <div class="sectionhead">
+    <h2>What the numbers say</h2>
+    <p>Twenty participants ranked the five conditions on each of the twelve turns, then picked the one they preferred overall.</p>
+  </div>
+
+  <div class="headline">
+    <div class="headline__big"><strong>84.6<small>%</small></strong></div>
+    <p>of participant-turn decisions preferred the full system <span class="mono">203 / 240</span>. Random composition from the same catalog, with the same amount of motion, was chosen 13.75% of the time.</p>
+  </div>
+
+  <figure class="study">
+    <figcaption>User study · mean within-turn rank, 1 = worst, 5 = best</figcaption>
+    <div class="study__scroll">
+      <table class="study__table" id="studyTable">
+        <thead><tr><th scope="col">Condition</th><th scope="col">Naturalness</th><th scope="col">Expressiveness</th><th scope="col">Coherence</th><th scope="col">Gesture–speech</th><th scope="col">Preferred</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </figure>
+
+  <div class="facts">
+    <div class="fact">
+      <h3>End-to-end timing</h3>
+      <dl>
+        <div><dt>Speech–body overlap</dt><dd>84.72<small>%</small></dd></div>
+        <div><dt>Turns completed without failure</dt><dd>100<small>%</small></dd></div>
+        <div><dt>Face offset from reply audio</dt><dd>37.5<small> ms</small></dd></div>
+        <div><dt>Body offset from reply audio</dt><dd>−666.6<small> ms</small></dd></div>
+      </dl>
+      <p>Averages over the 12 turns. The negative body offset means the first gesture begins before the first audio sample, as a human preparation phase does.</p>
+    </div>
+    <div class="fact">
+      <h3>Beat alignment</h3>
+      <table class="mini">
+        <thead><tr><th scope="col">Method</th><th scope="col">Binary BAS ↑</th><th scope="col">Gaussian BAS ↑</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Simple Motion</th><td>0.297 <i>± 0.206</i></td><td>0.210 <i>± 0.129</i></td></tr>
+          <tr><th scope="row">Random Motion</th><td>0.281 <i>± 0.197</i></td><td>0.190 <i>± 0.145</i></td></tr>
+          <tr class="is-ours"><th scope="row">TRABot</th><td>0.308 <i>± 0.141</i></td><td>0.225 <i>± 0.130</i></td></tr>
+        </tbody>
+      </table>
+      <p>Gesture apexes against emphasised speech intervals, 12 utterances per condition, σ = 0.30 s for the Gaussian variant.</p>
+    </div>
+    <div class="fact">
+      <h3>Planner, on 200 fixed replies</h3>
+      <table class="mini">
+        <thead><tr><th scope="col">Method</th><th scope="col">Atoms per reply ↑</th><th scope="col">Unused budget ↓</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Random Match</th><td>1.451</td><td>2.376 s</td></tr>
+          <tr class="is-ours"><th scope="row">TRABot</th><td>1.705</td><td>0.993 s</td></tr>
+        </tbody>
+      </table>
+      <p>Same catalog and budget for both. The planner fits 17.5% more atoms into a reply and leaves 58.2% less of the budget unused.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── CITE ───────────── -->
+<section class="wrap cite" id="cite">
+  <div class="sectionhead">
+    <h2>Cite</h2>
+  </div>
+  <div class="bib">
+    <button class="ghost ghost--ink" id="copyBib" type="button">Copy</button>
+<pre id="bibtex">@article{jiang2026trabot,
+  title   = {Talk, Render, Act: Integrating Social Gesture and Digital Face
+             with Synchronized Speech for Conversational Humanoid Robot},
+  author  = {Jiang, Jin and Li, Kun and Ma, Jiancong and Liao, Shengcai},
+  journal = {arXiv preprint arXiv:2610.06153},
+  year    = {2026}
+}</pre>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot wrap">
+  <p>TRABot builds on BEAT2, SoulX-FlashHead, Gemini Live, Qwen3-VL and the Unitree G1.</p>
+  <p class="mono">Talk · Render · Act</p>
+</footer>
+
+<script src="assets/cases.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
